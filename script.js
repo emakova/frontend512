@@ -2456,8 +2456,9 @@ form.insertAdjacentHTML(
 //git status
 
 
-console.log("вносим изменения");
+// console.log("вносим изменения");
 
+console.log("вносим изменения на другом рабочем месте");
 
 
 
