@@ -2335,19 +2335,21 @@ emailInput.style.borderRadius = "5px";
 emailInput.style.outline = "none";
 //обозначили немного стелей чтобы все было в одном файле для удобства
 function isValidEmail(email){
-  let reg = /^[a-zA-Z][9-0][!#$%^&*]+@[a-zA-Z]{2,}\.[a-zA-Z]{2,}$/;
+  let reg = /^[a-zA-Z0-9!#$%^&*]+@[a-zA-Z]{2,}\.[a-zA-Z]{2,}$/;
   return reg.test(email);
 }
 //проверяем корректность email с помощью функции
 emailInput.addEventListener("input",function(){
   let value = this.value;
+  console.log(value);
+  
   if(value === ""){
     emailInput.style.borderColor = "#ccc";
     errorMessage.style.display = "none";
     return;
   }
   if(isValidEmail(value)){
-    emailInput.style.borderColor = "#ccc";
+    emailInput.style.borderColor = "#00ff00";
     errorMessage.style.display = 'none';
   }else{
     emailInput.style.borderColor = '#ff0000'
