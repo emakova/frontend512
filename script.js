@@ -2324,7 +2324,7 @@ function isStrongPassword(password){
 
 //домашнее задание
 
-let emailInput = document.getElementById("emailInput");
+/* let emailInput = document.getElementById("emailInput");
 let errorMessage = document.getElementById('errorMessage');
 //нашли все поля
 emailInput.style.padding = "10px";
@@ -2355,7 +2355,8 @@ emailInput.addEventListener("input",function(){
     emailInput.style.borderColor = '#ff0000'
 		errorMessage.style.display = 'block'
   }
-});
+}); */
+
 // новый урок . 31 занятие
  
 //задание с крестиками и ноликами
@@ -2540,13 +2541,209 @@ let {login:{firstname: f,lastname: l}, psw, role} = user;
 document.writeln(f+ " " + l + " ", psw, " ",role) */
 
 
-// домашнее задание 
+/* // домашнее задание 
 
 // создать объект , который будет выводить на экран имя человека который выйграл автомобиль (цвет случайным образом выбирается из массива). в обьекте имя сохренено в ключ, выйграл просто прописываем словом при выводе , хранится массив цветов и сама марка автомобиля в объекте . (свойства объекта). вывод информации идет в методе
-
 //Math.random -  через этот метод генерируем случайный цвет 
-
 //игорь выйграл красный Bently
+let participants = [
+	{
+		name: 'игорь',
+		colors: ['салатовый', 'голубой', 'оранжевый', 'красный'],
+	},
+	{
+		name: 'Дима',
+		colors: ['золотой', 'серебристый', 'лавандовый', 'лососевый'],
+	},
+	{
+		name: 'Олег',
+		colors: ['синий', 'лазурный', 'белый', 'желтый'],
+	},
+	{
+		name: 'Костя',
+		colors: ['зеленый', 'фиолетовый', 'черный', 'розовый'],
+	},
+];
+//объекты(участники)
+let carBrands = ["Bentley","Porsche","Lamborghini","Ferrari","Rolls-Royce"];
+//автомобили
+function RandomItem(array){
+  let randomIndex = Math.floor(Math.random()*array.length);
+  return array[randomIndex];
+}
+//выбор случайного элемента из массива
+function winner(){
+  let randomParticipant = RandomItem(participants);
+  let randomBrand = RandomItem(carBrands);
+  let randomColor = RandomItem(randomParticipant.colors);
+  //выбрали участника,цвет и марку
+console.log(`${randomParticipant.name} выйграл ${randomColor} ${randomBrand}`);
+
+};
+winner();
+winner();
+winner();
+winner(); */
+
+
+//новый урок
+//функция - конструктор
+/* function Car(name,year){
+  this.name = name;
+  this.year = year;
+}
+//за пределами функции конструктора написана функция вычисления 2026 - год выпуска автомобиля и получаем ответ в кончоли
+Car.prototype.getAge = function(){
+  return new Date().getFullYear() - this.year;
+}
+Car.prototype.color = "black";
+let ford = new Car('Ford', 2019);
+console.log(ford);
+console.log(ford.getAge())
+ford.color = "red";
+console.log(ford.color)
+let bmw = new Car("BMW", 2017);
+console.log(bmw);
+console.log(bmw.color); */
+
+//это старый подход. сейчас можно писать все в общей функции конструкторе
+
+/* function User(pName,pAge){
+  this.age = pAge;
+  this.name = pName;
+  this.displayInfo = function(){
+    document.writeln("имя: " + this.name + " возраст: " + this.age + "<br>")
+  }
+}
+let tom = new User("Tom",26);
+tom.displayInfo(); */
+
+
+//задание 1
+/* let form = document.form1;
+form.addEventListener("submit", event =>{
+  event.preventDefault();
+
+  let title = form.title.value;
+  let text = form.text.value;
+  let description = form.description.value;
+  //console.log(title,text);
+  saveForm({ title, text, description });
+})
+//  function saveForm(obj){
+//   let { title, text, description } = obj; 
+  // function saveForm(title, text, description) {
+  function saveForm(obj) {
+		let formData = {
+			date: new Date().toLocaleDateString(),
+			// title,
+			// text,
+			// description,
+      ...obj
+		}
+		console.log('form data: ', formData)
+	} */
+
+//задание 2 игрулька новая 
+/* let cardsArray = [
+	{ name: 'card1', img: 'c0.gif' },
+	{ name: 'card2', img: 'c1.gif' },
+	{ name: 'card3', img: 'c2.gif' },
+	{ name: 'card4', img: 'c3.gif' },
+	{ name: 'card5', img: 'c4.gif' },
+	{ name: 'card6', img: 'c5.gif' },
+	{ name: 'card7', img: 'c6.gif' },
+	{ name: 'card8', img: 'c7.gif' },
+];
+
+let firstCard = null;
+let secondCard = null;
+let lockBoard = false;
+
+function createBoard() {
+	let gameBoard = document.querySelector('.game-board')
+	let shuffledCards = [...cardsArray, ...cardsArray].sort(
+		() => 0.5 - Math.random(),
+	)
+
+	shuffledCards.forEach((card) => {
+		let cardElement = document.createElement('div')
+		cardElement.classList.add('card')
+		cardElement.dataset.name = card.name
+
+    let cardImage = document.createElement("img");
+    cardImage.src = card.img;
+    cardElement.append(cardImage);
+
+    cardElement.addEventListener("click", flipCard);
+		gameBoard.append(cardElement);
+	})
+}
+function flipCard(){
+  if(lockBoard){
+    return;
+  }
+  if(this === firstCard){
+    return;
+  }
+  this.classList.add("flipper");
+  if(!firstCard){
+    firstCard = this;
+    return;
+  }
+  secondCard =this;
+  checkForMatch();
+}
+function checkForMatch(){
+if(firstCard.dataset.name === secondCard.dataset.name){
+  disabledCard();
+}else{
+  unflipCard();
+}
+}
+function disabledCard(){
+  firstCard.removeEventListener("click",flipCard);
+  secondCard.removeEventListener('click', flipCard);
+  resetBoard();
+}
+function unflipCard(){
+  lockBoard = true;
+  setTimeout(()=>{
+    firstCard.classList.remove("flipper")
+    secondCard.classList.remove('flipper');
+    resetBoard();
+  },1000);
+}
+function resetBoard(){
+  [firstCard, secondCard, lockBoard]=[null,null,null]
+}
+createBoard() */
+
+
+// let и  const  разница при работе с объектами 
+/*  const week =7;
+week = 9; // ошибка
+//const  мы не можем использовать на приметивных типах данных
+console.log(week); 
+const week1 = {
+  name: "jonh"
+}
+week1.name = "peter"
+console.log(week1)//можем так
+const week2 = ["qqq","www"]
+week2[0]= "hello"//можем так
+week2 = "строка"//не можем так 
+console.log(week2) */
+/* const book = {title: "Дюна"}
+const anotherBook = { title: 'Дюна' }
+console.log(book == anotherBook);//нельзя сравнивать {}
+let a =5;
+let b = 5;
+console.log(a==b);// true
+
+let mas1 = [1,2,3]
+let mas2 = [1, 2, 3]
+//не равны потому что они ведут себя также как и объекты . у ник одинаковые методы и родитель */
 
 
 
