@@ -2358,7 +2358,7 @@ emailInput.addEventListener("input",function(){
 }); */
 
 // новый урок . 31 занятие
- 
+
 //задание с крестиками и ноликами
 
 /* let area = document.getElementById('area')
@@ -2475,7 +2475,6 @@ console.log(car);
 document.writeln(car.name + " " + car.color[1] + " " + car.colors.second);
 car.hello(); */
 
-
 /* let fill = car.color.filter(function(elem){
   return elem.length <5;
 });
@@ -2540,7 +2539,6 @@ console.log(log);
 let {login:{firstname: f,lastname: l}, psw, role} = user;
 document.writeln(f+ " " + l + " ", psw, " ",role) */
 
-
 /* // домашнее задание 
 
 // создать объект , который будет выводить на экран имя человека который выйграл автомобиль (цвет случайным образом выбирается из массива). в обьекте имя сохренено в ключ, выйграл просто прописываем словом при выводе , хранится массив цветов и сама марка автомобиля в объекте . (свойства объекта). вывод информации идет в методе
@@ -2585,7 +2583,6 @@ winner();
 winner();
 winner(); */
 
-
 //новый урок
 //функция - конструктор
 /* function Car(name,year){
@@ -2618,7 +2615,6 @@ console.log(bmw.color); */
 let tom = new User("Tom",26);
 tom.displayInfo(); */
 
-
 //задание 1
 /* let form = document.form1;
 form.addEventListener("submit", event =>{
@@ -2644,7 +2640,7 @@ form.addEventListener("submit", event =>{
 		console.log('form data: ', formData)
 	} */
 
-//задание 2 игрулька новая 
+//задание 2 игрулька новая
 /* let cardsArray = [
 	{ name: 'card1', img: 'c0.gif' },
 	{ name: 'card2', img: 'c1.gif' },
@@ -2719,8 +2715,7 @@ function resetBoard(){
 }
 createBoard() */
 
-
-// let и  const  разница при работе с объектами 
+// let и  const  разница при работе с объектами
 /*  const week =7;
 week = 9; // ошибка
 //const  мы не можем использовать на приметивных типах данных
@@ -2745,8 +2740,230 @@ let mas1 = [1,2,3]
 let mas2 = [1, 2, 3]
 //не равны потому что они ведут себя также как и объекты . у ник одинаковые методы и родитель */
 
+//дз с автомобилями и именами.
+//  задача 1
+/* function Automobile(manufact, model, year, color) {
+
+this.manufact = manufact;
+this.model = model;
+this.year = year;
+this.color = color;
+
+this.whatColor = function () {
+document.writeln('Цвет машины: ' + this.color + ' ')
+}
+this.autoInfo = function () {
+document.writeln("<br>" + 'Модель машины: ' +  this.manufact +' ' + this.model + '<br>' + 'Год выпуска: ' + this.year + '<br>' + 'Производитель автомобиля: ' +
+this.manufact + '<br>')}
+}
+
+let m = [
+	new Automobile('Nissan', 'Skyline', 2007, 'Red'),
+	new Automobile('Toyota', 'Corolla', 2009,'Black'),
+	new Automobile('Volkswagen', 'Golf', 2009, 'Blue'),
+];
+for(let i = 0;i<m.length;i++){
+  m[i].whatColor();
+  m[i].autoInfo();
+  document.writeln("<br>");
+} */
+//задача 2
+/* function Person (name, age, job){
+  this.name = name;
+  this.age = age;
+  this.job =job;
+
+  this.who = function(){
+  document.writeln(`я ${this.name} мне ${this.age} лет. Я работаю ${this.job} <br>`);
+};
+}
+let m = [
+	{name:'Дмитрий', age: 26, job: 'дизайнером'},
+	{name:'Станислав', age: 29, job:'програмистом'},
+	{name:'Сергей', age: 35, job:'менеджером'},
+];
+for(let i = 0;i<m.length;i++){
+  let d = m[i];
+  let newPerson = new Person(d.name, d.age, d.job);
+  newPerson.who()
+  document.writeln("<br>");
+} */
+
+  
+  
+//новый урок 33
+
+/* const personData = [["name","сергей"],["age",37]]
+const person = Object.fromEntries(personData);
+console.log(person);
+// сделали ключ и его значения из вложенныхмассивов в массиве
+const first = null;
+const second = {name: "bob"}
+function printName(person){
+console.log(person?.name);
+}
+printName(second);//bob
+printName(first);//error or undefind with <?> in code
+const first = null;
+const second={
+name: "bob",
+sayHi(){
+  console.log(`hi i am ${this.name}`);
+}
+};
+function printName(person){
+console.log(person?.name);
+};
+printName(second);
+printName(first);
+first?.sayHi();
+second?.sayHi(); */
+
+/* const obj = {name:"irina"};
+Object.preventExtensions(obj);
+//запрещаем расширение исходного объекта. выдаст ошибку из-за строки ниже. но можно изменить значение уже существующиего ключа
+obj.age =25;
+console.log((obj)); */
+
+/* const obj = { name: 'irina' };
+Object.freeze(obj);
+//запрещаем расширение исходного объекта. выдаст ошибку из-за строки ниже. нельзя ни значение ни ключ изменить ю любые взвимодействия не будут применяться
+obj.name = "marina"; */
+
+//контекст
+
+/* let person = {
+	age: 24,
+	name: 'irina',
+	job: 'programmer',
+	displayInfo: function (ms) {
+    let self = this;
+		setTimeout(function () {
+      //появляются новые {} и поэтому появляется новый this,но мы пересохраняем в новую пременную
+			console.log('name:', self.name)
+			console.log('age:', self.age)
+			console.log('job:', self.job)
+		}, ms)
+	},
+}
+person.displayInfo(2000); */
+/* let person = {
+	age: 24,
+	name: 'irina',
+	job: 'programmer',
+	displayInfo: function (ms) {
+		setTimeout(function () {
+			//появляются новые {} и поэтому появляется новый this,но мы пересохраняем  его, фиксируем с помощью bind(this)
+			console.log('name:', self.name)
+			console.log('age:', self.age)
+			console.log('job:', self.job)
+		}.bind(this), ms)
+	},
+}
+person.displayInfo(2000) */
+/* let person = {
+	age: 24,
+	name: 'irina',
+	job: 'programmer',
+	displayInfo (ms) {
+		setTimeout(() => {
+			//появляются новые {} и поэтому появляется новый this,но мы пересохраняем  его с помощью стрелоочной функции
+			console.log('name:', this.name)
+			console.log('age:', this.age)
+			console.log('job:', this.job)
+		}, ms)
+	},
+}
+person.displayInfo(2000) */
+/* let person = {
+	age: 24,
+	name: 'irina',
+	job: 'programmer',
+	displayInfo: function () {
+		console.log('name:', this.name)
+		console.log('age:', this.age)
+		console.log('job:', this.job)
+	},
+} */
+//работает
+
+/* let h = document.querySelector("h1")
+h.addEventListener("click", function(){
+  this.style.color = "red"
+})
+//стрелочная функция работать не будет. this не имеет свой контекст при стрелочной функции. */
+
+//browser object model
+/* alert("hello");
+window.alert('hello');
+window.document.querySelector("h1").style.color = "red";
+//ничего не поменялосью просто упростили код */
+
+/* // задача с модальным окном на открытие и закрытиею закрытие по крестику и по клику по путому месту вокруг самого окна (за пределами клика)
+let modal = document.querySelector("#modal")
+document.querySelector("#btn").addEventListener("click", function(){
+  modal.style.display = "block"
+})
+document.querySelector(".close").addEventListener("click",function(){
+  modal.style.display = "none";
+})
+window.addEventListener("click",function(event){
+    if(event.target == modal){
+      modal.style.display = 'none';
+    }
+}) */
+
+/* let w =document.documentElement.clientWidth;
+let h = document.documentElement.clientHeight;
+document.querySelector("#window").innerHTML = ' ширина окна : '+ w + ", высота окна: " + h;
+//другой способ показать ширину и высоту
+console.log("ширина: ", window.innerWidth);
+console.log('высота: ', window.innerHeight) */
+
+// задача с окном и lorem
+
+/* let box = document.querySelector(".box");
+// let width = box.clientWidth;
+// let height  = box.clientHeight;
+// let width  =box.offsetWidth;
+// let height = box.offsetHeight
+//игнорирует мэрджины , полосу прокрутки и рамку
+// let width = box.scrollWidth;
+// let height = box.scrollHeight;
+//высоту берет у всего бокса , то есть всего его содержимого вместе с лоремами. ширину взял минусом полосу прокрутки
+// console.log(width,height);
+//при нажатии на кнопку открывается полностью бокс и закрывается назад
+let flag = 1;
+let hh = box.offsetHeight;
+
+document.querySelector("button").addEventListener("click",function(){
+  // if(!flag){
+  //   box.style.height = box.scrollHeight + 'px'  
+  // }else{
+  //   box.style.height = hh + 'px';
+  // }
+  // flag = !flag;
+  console.log(box.scrollTop);
+  // на какой координате находится с начала прокрутки наше чтиво
+  
+}) */
+
+//задача создать едущую машинку которая будет  ехать по уровню прокрутки страницы
+
+/* window
+.addEventListener("scroll",myFunction)
+ function myFunction(){
+  let winScroll = document.documentElement.scrollTop;
+  let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+
+  let scrolled = winScroll / height * 100;
+  document.querySelector("#myBar").style.width = scrolled + "%"
+
+  document.querySelector("img").style.transform = "translate("+(document.documentElement.clientWidth - 94)*scrolled/100 +"px,0px)";
+} */
 
 
+//дз сделать модальное окно с формой для заполнения с кнопкой. при нажатии на кнопку должны данные выводиться данные в консоли. внешний вид на свое усмотрение. модальное окно закрывается при нажать на кнопку отправить или при нажатии вне модального окна
 
 
 
