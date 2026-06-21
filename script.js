@@ -2964,7 +2964,55 @@ document.querySelector("button").addEventListener("click",function(){
 
 
 //дз сделать модальное окно с формой для заполнения с кнопкой. при нажатии на кнопку должны данные выводиться данные в консоли. внешний вид на свое усмотрение. модальное окно закрывается при нажать на кнопку отправить или при нажатии вне модального окна
-
+   // 1. Находим элементы DOM
+let openBtn = document.getElementById('openModalBtn');
+let modalOverlay = document.getElementById('modalOverlay');
+let form = document.getElementById('myForm');
+let nameInput = document.getElementById('nameInput');
+let  emailInput = document.getElementById('emailInput');
+let questionInput = document.getElementById('questionInput') 
+// 2. Функция открытия модального окна
+openBtn.addEventListener('click', function() {
+modalOverlay.classList.add('active');
+form.reset(); 
+});
+ // 3. Функция закрытия модального окна
+function closeModal() {
+modalOverlay.classList.remove('active');
+}
+ // 4. Закрытие по клику ВНЕ модального окна (на затемненный фон)
+modalOverlay.addEventListener('click', function(event) {
+if (event.target === modalOverlay) {
+closeModal();
+}
+});
+ 
+// 5. Обработка отправки формы
+form.addEventListener('submit', function(event) {
+event.preventDefault(); // Отменяем перезагрузку страницы
+ 
+// Собираем данные
+let name = nameInput.value.trim();
+let email = emailInput.value.trim();
+let question = questionInput.value.trim()
+// проверка на заполнение формы
+if (name === '' || email === '') {
+alert('Пожалуйста, заполните все поля!');
+return;
+}
+// Формируем объект с данными
+const userData = {
+name: name,
+email: email,
+question: question,
+timestamp: new Date().toLocaleString()
+};
+ 
+// 6. Выводим данные в консоль
+console.log('Данные формы отправлены:', userData);
+// Закрываем модальное окно
+closeModal();
+});
 
 
 

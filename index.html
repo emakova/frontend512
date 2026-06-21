@@ -533,7 +533,7 @@
 </div>
 <button>открыть окно</button> -->
 
-		<div class="header">
+		<!-- <div class="header">
 			<div class="progress-container">
 				<div class="progress-bar" id="myBar"></div>
 				<img src="1.gif" alt="" />
@@ -852,7 +852,39 @@
 					error optio.
 				</p>
 			</div>
-		</div>
+		</div> -->
+
+		<!-- домашнее задание -->
+
+<!-- Кнопка, открывающая модальное окно -->
+<button id="openModalBtn">Открыть форму</button>
+
+
+<div class="modal-overlay" id="modalOverlay">
+<div class="modal-content">
+<h2>Вы получите подробную консультацию</h2>
+
+<form id="myForm">
+<div class="form-group">
+<label for="nameInput">Ваше имя</label>
+<input type="text" id="nameInput" placeholder="Введите имя" required />
+</div>
+
+<div class="form-group">
+<label for="emailInput">Электронная почта</label>
+<input type="email" id="emailInput" placeholder="example@mail.com" required />
+</div>
+
+<div class="form-group">
+<label for="questionInput">Ваш вопрос</label>
+<textarea  id="questionInput" placeholder="Опишите вашу проблему"></textarea>
+</div>
+
+<button type="submit" id="submitBtn">Отправить данные</button>
+</form>
+</div>
+</div>
+
 
 		<script src="script.js"></script>
 	</body>

@@ -479,7 +479,7 @@ text-align: center;
 /* body{
   margin: 20px;
 } */
-.box{
+/* .box{
   box-sizing: border-box;
   width: 400px;
   height: 350px;
@@ -517,9 +517,135 @@ button{
             padding: 100px 0;
             margin: 0 auto;
             width: 80%;
-        }
+        } */
 
+ body {
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+background-color: #f0f2f5;
+}
+ 
+#openModalBtn {
+padding: 15px 30px;
+font-size: 18px;
+background-color: #007bff;
+color: white;
+border: none;
+border-radius: 8px;
+cursor: pointer;
+transition: background-color 0.3s;
+}
+#openModalBtn:hover {
+background-color: #0056b3;
+}
+ 
+/* Затемнение фона  */
+.modal-overlay {
+display: none; /* Скрыто по умолчанию */
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.5);
+backdrop-filter: blur(3px); 
+/* Легкое размытие фона */
+z-index: 1000;
+justify-content: center;
+align-items: center;
+opacity: 0;
+transition: opacity 0.3s ease;
+}
+ 
+/* Активный класс для отображения с анимацией */
+.modal-overlay.active {
+display: flex;
+opacity: 1;
+}
+ 
+/* Само модальное окно */
+.modal-content {
+background: white;
+padding: 30px 40px;
+border-radius: 12px;
+box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+max-width: 450px;
+width: 100%;
+transform: scale(0.95);
+transition: transform 0.3s ease;
+position: relative;
+}
+ 
+.modal-overlay.active .modal-content {
+transform: scale(1);
+}
+ 
+.modal-content h2 {
+margin-bottom: 20px;
+color: #333;
+text-align: center;
+}
+ 
+/* Элементы формы */
+.form-group {
+margin-bottom: 15px;
+}
+ 
+.form-group label {
+display: block;
+margin-bottom: 5px;
+font-weight: 600;
+color: #555;
+}
+ 
+.form-group input {
+width: 100%;
+padding: 10px;
+border: 1px solid #ccc;
+border-radius: 6px;
+font-size: 16px;
+outline: none;
+transition: border-color 0.2s;
+}
 
+.form-group textarea{
+width: 100%;
+padding: 10px;
+height: 80px;
+border: 1px solid #ccc;
+border-radius: 6px;
+font-size: 16px;
+outline: none;
+resize: vertical;
+font-family: inherit;
+transition: border-color 0.2s;
+}
+ 
+.form-group input:focus,
+ .form-group textarea:focus{
+border-color: #007bff;
+}
+ 
+/* Кнопка отправки */
+#submitBtn {
+width: 100%;
+padding: 12px;
+background-color: #28a745;
+color: white;
+border: none;
+border-radius: 6px;
+font-size: 16px;
+font-weight: bold;
+cursor: pointer;
+margin-top: 10px;
+transition: background-color 0.3s;
+}
+ 
+#submitBtn:hover {
+background-color: #218838;
+}
 
 
 
